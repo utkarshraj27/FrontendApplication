@@ -1,0 +1,84 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body id="background">
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">       
+        <h3 align="center">MAKE PAYMENT</h3>
+       
+    <form  #paymentForm="ngForm" (ngSubmit)='onSubmit(paymentForm.value)'>
+        <br>
+        <div class="form-group">
+                <label><mark>Card Number:</mark>  </label>
+
+                <input required length="10" type="text" placeholder="Card Number" #cardNumber='ngModel' name="cardNumber" ngModel class="form-control"
+                required pattern="^((\\+91-?)|0)?[0-9]{10}$" >
+
+                <div *ngIf='cardNumber.errors && cardNumber.touched' class="alert alert-danger">
+
+                    <div [hidden]='!cardNumber.errors.required'> Card Number is Manadatory </div>
+                        <span *ngIf='cardNumber.errors.pattern'>Card Number should be numeric and of 10 digits</span>
+                    
+                </div>
+            </div>
+                <br>
+
+                <div class="form-group">
+
+                <label><mark>Expiration Date:</mark> </label>
+
+                <input required minlength="2" type="text" placeholder="MM/YYYY" #date='ngModel' name="expirationDate" ngModel
+                    class="form-control" required pattern="(0[1-9]|10|11|12)/20[0-9]{2}$">
+
+                <div *ngIf='date.errors && date.touched' class="alert alert-danger">
+
+                    <div [hidden]='!date.errors.required'>
+
+                    Provide Expiration Date
+
+                    </div>
+
+                    <div *ngIf='date.errors.pattern'>Please enter valid expiration date</div>
+
+                </div>
+                </div>
+                <br>
+                <div class="form-group">
+
+                <label><mark>Cvv:</mark>  </label>
+
+                <input required length="3" type="number" #cvv='ngModel' pattern="" name="cvCode" ngModel class="form-control"
+                >
+
+                <div *ngIf='cvv.errors && cvv.touched' class="alert alert-danger">
+
+                    <div [hidden]='!cvv.errors.required'> Provide Cvv. It is at the back of the card persists of 3 digit number. </div>
+                    <div *ngIf='cvv.errors.pattern'>cvv code should be of 3 digits only</div>
+
+                </div>
+                </div>
+
+                <br>
+                <div class="form-group">
+
+                <label><mark>Card Owner Name:</mark>  </label>
+
+                <input required length="30" type="text" #cardowner='ngModel' name="cardOwner" ngModel class="form-control"
+                required pattern="[a-zA-Z][a-zA-Z ]*">
+
+                <div *ngIf='cardowner.errors && cardowner.touched' class="alert alert-danger">
+                    <div [hidden]='!cardowner.errors.required'> Card Owner name is manadatory </div>
+              
+                <div *ngIf='cardowner.errors.pattern'>Please enter valid name</div>
+            </div>
+            </div>
+            <br>
+            <div>
+                <input type="submit" value="Proceed to Payment" class="btn btn-primary">
+            </div>
+    </form>
+</div>
+</div>
+</body>

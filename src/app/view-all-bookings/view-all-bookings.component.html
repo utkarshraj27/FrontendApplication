@@ -1,0 +1,63 @@
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<div align="right"> <input type="submit"  routerLink='/applogin' value="LogOut" class="btn btn-success">
+</div>
+
+
+
+<div id="background">
+  <div align="left"> <input type="submit"  routerLink='/adminLogin' value="back" class="btn btn-success">
+  </div>
+  
+  <br><br><br>
+    <h1 align="center">All Bookings</h1>
+    <br>
+    <div class="row justify-content-center">
+      <div class="col-sm-8 text-left bg-white rounded shadow py-13">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>Booking Id</th>
+              <th>User Name</th>
+              <th>Booking Status</th>
+              <th>Booking Date</th>
+              <th>Service Id</th>
+              <th>Service Name</th>
+              <th>Service Cost</th>
+               
+            </tr>
+          </thead>
+          <tr *ngFor="let booking of bookingDetail">
+            <td>{{booking.bookingId}}</td>
+            <td>{{booking.userName}}</td>
+            <div *ngIf="booking.bookingStatus==false">
+                <td>Pending</td>
+            </div>
+            <div *ngIf="booking.bookingStatus==true">
+                <td>Approved</td>
+            </div>
+            <td>{{booking.bookingDate}}</td>
+            <td>{{booking.serviceId}}</td>
+            <td>{{booking.serviceName}}</td>
+            <td>{{booking.serviceCost}}</td>
+            <!-- <td>
+              <button (click)="updateItemIntoCart(product.productId)" type="button" class="btn btn-primary">Update
+                Quantity</button>
+            </td> -->
+            <!-- <td>
+        <button  type="button" class="btn btn-success">Order Now</button>
+    </td> -->
+            <!-- <td>
+              <button (click)="cancelBooking(booking.bookingId)" type="button" class="btn btn-danger">Cancel Booking</button>
+            </td>
+     -->
+          </tr>
+        </table>
+      </div>
+    </div>
+    </div>
+  
+  
+

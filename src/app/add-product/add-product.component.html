@@ -1,0 +1,65 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+
+    <div id="background" >
+        <app-navbar></app-navbar>
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <h3 align="center">ADD SERVICE</h3>
+
+            <form #userForm="ngForm" (ngSubmit)='onSubmit(userForm.value)'>
+
+
+                <div class="form-group">
+
+                    <label>SERVICE NAME: </label>
+
+                    <input required minlength="2" type="text" #proNameRef='ngModel' name="serviceName" ngModel
+                        class="form-control">
+
+                    <div *ngIf='proNameRef.errors
+                        && proNameRef.touched' class="alert alert-danger">
+
+                        <div [hidden]='!proNameRef.errors.required'>
+
+                            Provide Service Name
+
+                        </div>
+
+                        <div *ngIf='proNameRef.errors.pattern'>Name should be minimum of 6 characters length</div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>SERVICE PRICE: </label>
+
+                    <input required minlength="1" length="1" type="number" #propriRef='ngModel' name="serviceCost"
+                        ngModel class="form-control">
+
+                    <div *ngIf='propriRef.errors && propriRef.touched' class="alert alert-danger">
+
+                        <div [hidden]='!propriRef.errors.required'> Provide Product Price </div>
+
+                    </div>
+                </div>
+
+
+                <input [disabled]="userForm.invalid" type="submit" value="Add Service" class="btn btn-primary">&nbsp;
+                <button type="button float-right" id="back" class="btn btn-primary"
+                    routerLink="/adminLogin">BACK</button>
+
+
+                    <div>
+                        <div class="p-3 mb-2 bg-dark text-white">
+                            <h2>{{message}}</h2>
+                        </div>
+                    </div>
+            </form>
+        </div>
+
+    

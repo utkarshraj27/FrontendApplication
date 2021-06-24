@@ -1,0 +1,57 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+
+
+
+<div id="background">
+<app-navbar></app-navbar>
+<div align="center">
+   
+    <br>
+    <label> <b>Enter service Name</b>
+    <input required type="text" #userIdRef='ngModel' name="id" [(ngModel)]="id" ngModel class="form-control"></label>
+    <div *ngIf='userIdRef.errors
+                && userIdRef.touched' class="alert alert-danger">
+        <div [hidden]='!userIdRef.errors.required'>
+           please Provide valid service id
+        </div>
+    </div>
+  
+    <button type="button"  id="button" (click)="getStatus()" class="btn btn-primary" class="form-group">Search</button>
+  </div>
+  <br>
+  <div *ngIf="search" align="center" >
+    <table class="table table-striped" >
+  
+        <thead align="center">
+            <tr>
+                <th>SERVICE ID</th>
+                <th>SERVICE NAME</th>
+                <th>SERVICE COST</th>
+                
+            </tr>
+            </thead>
+        
+        <tbody>
+            <tr>
+                <td> <mark>{{Product.serviceId}}</mark></td>
+                <td> <mark>{{Product.serviceName}}</mark> </td>
+                <td> <mark>{{Product.serviceCost}}</mark></td>
+                
+                <td>
+            </tr>
+            
+</tbody>
+    </table>
+    <div class="p-3 mb-2 bg-info text-white"><h2>{{message}}</h2></div>
+  </div>
+  <!--<div align="center" *ngIf="search" align="center">
+    <h3> Invalid Product ID</h3>
+  </div>-->
+ 
+  <button type="button float-right" id="back"   class="btn btn-primary" routerLink="/adminLogin">BACK</button>
+  
+</div>

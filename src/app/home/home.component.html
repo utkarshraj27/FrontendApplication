@@ -1,0 +1,57 @@
+<div id="background">
+<app-navbar></app-navbar>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<!-- <div align="right"> <input type="submit"  routerLink='/applogin' value="LogOut" class="btn btn-success">
+</div> -->
+
+<div align="center">
+    <h1>!! WELCOME !!</h1>
+</div>
+<br>
+<br>
+
+<div class="container">
+    
+    
+     
+    <table class="table table-striped " *ngIf="products && products.length > 0  else elseBlock">
+        <thead>
+            <tr>
+                <th><h6><b>Service ID</b></h6></th>
+                <th><h6><b>Service Name</b></h6></th>
+                <th><h6><b>Service Price</b></h6></th>
+                
+        
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let prod of products">
+                <td> <mark>{{prod.serviceId}}</mark> </td>
+                <td> <mark>{{prod.serviceName}}</mark> </td>
+                <td> <mark>{{prod.serviceCost}}</mark></td>
+                
+                <td>
+                    <button type="button" class="btn btn-large btn-block btn-primary" (click)="bookNow(prod.serviceName)">Book now</button>
+                    
+                </td>
+              
+               
+            </tr>
+        </tbody>
+        
+    </table>
+    <ng-template #elseBlock>
+        <h4 align="center"> There are no services to offer, please add your service ! </h4>
+        
+    </ng-template>
+    <button type="button float-right" id="back"   class="btn btn-primary" routerLink="/applogin">BACK</button>&nbsp;
+    <button class="btn btn-success" routerLink='/viewMyBookings'>View My Booking</button>&nbsp;
+</div>
+
+</div>
+
+  

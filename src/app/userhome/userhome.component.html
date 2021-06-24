@@ -1,0 +1,51 @@
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+
+  <body id="background">
+    <app-navbar></app-navbar>
+    <div class="container login-container">
+      <div class="row">
+        <div class="col-md-6 login-form-1">
+          <!--<div class="card card-signin my-5">-->
+          <div class="card-body">
+            <h2 class="card-title text-center"><mark>USER LOGIN</mark> </h2>
+            <form class="form-signin" #userForm="ngForm" (ngSubmit)='loginUser()'>
+              <small class="text-danger">
+                <h3>{{msg}}</h3>
+              </small>
+
+              <div class="form-label-group">
+                <label for="inputId"><b>Email Id </b></label>
+                <input type="text" id="inputId" class="form-control" #empIdRef='ngModel' name="emailId" ngModel
+                  placeholder="emailId" [(ngModel)]=user.emailId required autofocus required pattern="[a-zA-Z][a-z0-9.]+@[a-z.]+\.[a-z]{2,}$">
+                <div *ngIf='empIdRef.errors && empIdRef.touched' class="alert alert-danger">
+                  <div [hidden]='!empIdRef.errors.required'> Provide Email Id </div>
+                  <span *ngIf='useremailRef.errors.pattern'>Enter valid EmailId</span>
+                </div>
+              </div><br>
+
+
+              <div class="form-label-group">
+                <label for="inputPassword"><b>Password</b></label>
+                <input type="password" id="inputPassword" minlength="6" class="form-control" #userpasswordRef='ngModel'
+                  name="userPassword" ngModel placeholder="Password" [(ngModel)]=user.userPassword required>
+                <div *ngIf='userpasswordRef.errors &&userpasswordRef.touched' class="alert alert-danger">
+                  <div [hidden]='!userpasswordRef.errors.required'> Provide Password </div>
+                  <div *ngIf='userpasswordRef.errors.pattern'>Password should consists of minimun 8 digits</div>
+                </div>
+              </div><br>
+              <input [disabled]="userForm.invalid" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"
+                value="Login">
+              <hr class="my-4">
+            </form>
+            <a class="link" routerLink="/adduser">
+              <p class="text-center"><B><mark>Don't have account? Signup</mark></B></p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>

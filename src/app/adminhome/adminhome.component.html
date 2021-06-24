@@ -1,0 +1,50 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body id="background">
+    <app-navbar></app-navbar>
+
+    <div class="container login-container">
+        
+        <div class="row" style='float:center'>
+            <div class="col-md-6 login-form-1">
+                <div class="card-body"></div>
+                <h2 class="card-title text-center"><mark>ADMIN LOGIN</mark> </h2>
+                <form>
+                    <div class="form-label-group" >
+                        <label for="inputName"><b>Admin Email Id</b></label>
+                        <input type="text" id="inputName" class="form-control" #empNameRef='ngModel'
+                            placeholder="enter admin emailId" name="emailId" [(ngModel)]=user.emailId value="" required />
+                        <div *ngIf='empNameRef.errors && empNameRef.touched' class="alert alert-danger">
+                            <div [hidden]='!empNameRef.errors.required'> Provide Admin EmailId </div>
+                        </div>
+                    </div><br>
+                    <div class="form-label-group" >
+                        <label for="inputPassword"><b>Password</b></label>
+                        <input type="password" id="inputPassword" minlength="8" class="form-control"
+                            #userpasswordRef='ngModel' placeholder="enter password" name="userPassword"
+                            [(ngModel)]=user.userPassword value="" required />
+                        <div *ngIf='userpasswordRef.errors &&userpasswordRef.touched' class="alert alert-danger">
+                            <div [hidden]='!userpasswordRef.errors.required'> Provide Password </div>
+                            <div *ngIf='userpasswordRef.errors.pattern'>Password should consists of minimun 6 digits
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="form-group" >
+                        <button type="submit" class="btn btn-lg btn-primary btn-block text-uppercase"
+                            (click)='aLogin()'>Login</button>
+                            <small class="text-danger"><h3>{{msg}}</h3></small>
+                    </div>
+                </form>
+                <div class="form-group">
+                    <a href="#" class="ForgetPwd" value="Login">Forget Password?</a>
+                </div>
+            </div>
+        </div>
+        
+       
+    </div>
+
+</body>
