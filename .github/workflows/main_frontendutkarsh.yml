@@ -24,7 +24,7 @@ jobs:
     - name: npm install, build, and test
       run: |
         npm install
-        run ng build --prod --if-present
+        ng build --prod --if-present
        
 
     - name: Upload artifact for deployment job
